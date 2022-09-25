@@ -1,0 +1,7 @@
+com/ec/server/operations/Extracurricular.class
+com/ec/server/WebConfig.class
+com/ec/server/ExtracurricularServerApplication.class
+com/ec/server/operations/PayloadEC.class
+com/ec/server/operations/ECController.class
+com/ec/server/operations/ECService.class
+com/ec/server/operations/ECRepository.class
