@@ -2,6 +2,9 @@ package com.server.tour;
 
 import com.server.panorama.PanoramaFrame;
 import org.hibernate.Hibernate;
+import org.hibernate.annotations.Table;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Version;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -9,7 +12,6 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
-@Table(name = "tours")
 public class Tour {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

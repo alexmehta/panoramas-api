@@ -1,7 +1,10 @@
-com/ec/server/operations/Extracurricular.class
-com/ec/server/WebConfig.class
-com/ec/server/ExtracurricularServerApplication.class
-com/ec/server/operations/PayloadEC.class
-com/ec/server/operations/ECController.class
-com/ec/server/operations/ECService.class
-com/ec/server/operations/ECRepository.class
+com/server/panorama/PanoramaService.class
+com/server/tour/TourService.class
+com/server/panorama/PanoramaFrame.class
+com/server/tour/Tour.class
+com/server/tour/TourPayload.class
+com/server/tour/TourRepo.class
+com/server/WebConfig.class
+com/server/ServerApplication.class
+com/server/panorama/PanoramaRepository.class
+com/server/tour/TourController.class

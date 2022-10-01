@@ -1,7 +1,10 @@
-/home/alex/empower_backend/src/main/java/com/ec/server/WebConfig.java
-/home/alex/empower_backend/src/main/java/com/ec/server/operations/ECService.java
-/home/alex/empower_backend/src/main/java/com/ec/server/operations/ECRepository.java
-/home/alex/empower_backend/src/main/java/com/ec/server/ExtracurricularServerApplication.java
-/home/alex/empower_backend/src/main/java/com/ec/server/operations/PayloadEC.java
-/home/alex/empower_backend/src/main/java/com/ec/server/operations/ECController.java
-/home/alex/empower_backend/src/main/java/com/ec/server/operations/Extracurricular.java
+/home/alex/panoramas-api/src/main/java/com/server/WebConfig.java
+/home/alex/panoramas-api/src/main/java/com/server/tour/TourRepo.java
+/home/alex/panoramas-api/src/main/java/com/server/tour/TourController.java
+/home/alex/panoramas-api/src/main/java/com/server/panorama/PanoramaRepository.java
+/home/alex/panoramas-api/src/main/java/com/server/tour/TourService.java
+/home/alex/panoramas-api/src/main/java/com/server/panorama/PanoramaFrame.java
+/home/alex/panoramas-api/src/main/java/com/server/panorama/PanoramaService.java
+/home/alex/panoramas-api/src/main/java/com/server/ServerApplication.java
+/home/alex/panoramas-api/src/main/java/com/server/tour/Tour.java
+/home/alex/panoramas-api/src/main/java/com/server/tour/TourPayload.java

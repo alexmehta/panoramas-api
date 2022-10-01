@@ -1,10 +1,12 @@
 package com.server.tour;
 
+import com.jlefebure.spring.boot.minio.MinioException;
 import com.server.panorama.PanoramaService;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.transaction.Transactional;
+import java.io.IOException;
 import java.util.List;
 
 @Service
@@ -18,7 +20,7 @@ public class TourService {
         this.panoramaService = panoramaService;
     }
 
-    public Tour createTour(String name, String description, List<MultipartFile> photos) {
+    public Tour createTour(String name, String description, List<MultipartFile> photos) throws MinioException, IOException {
         Tour tour = new Tour(name, description);
         for (MultipartFile photo : photos) {
             tour.getPanoramaFrames().add(panoramaService.createPanorama(name + "/" + photo.getOriginalFilename(), photo));
@@ -32,7 +34,7 @@ public class TourService {
         }
         return list;
     }
-    public Tour insert(String name, String description, List<MultipartFile> folder) {
+    public Tour insert(String name, String description, List<MultipartFile> folder) throws MinioException, IOException {
         return createTour(name,description,folder);
     }
 }
