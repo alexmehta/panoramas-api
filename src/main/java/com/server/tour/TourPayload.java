@@ -1,0 +1,31 @@
+package com.server.tour;
+
+import org.springframework.web.multipart.MultipartFile;
+
+import java.util.List;
+
+public class TourPayload {
+    private String description;
+    private List<MultipartFile> folder;
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public List<MultipartFile> getFolder() {
+        return folder;
+    }
+
+    public void setFolder(List<MultipartFile> folder) {
+        this.folder = folder;
+    }
+
+    public TourPayload(String description, List<MultipartFile> folder) {
+        this.description = description;
+        this.folder = folder;
+    }
+}
