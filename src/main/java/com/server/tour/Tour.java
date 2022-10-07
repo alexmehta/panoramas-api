@@ -3,7 +3,6 @@ package com.server.tour;
 import com.server.panorama.PanoramaFrame;
 import org.hibernate.Hibernate;
 import org.hibernate.annotations.Table;
-import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Version;
 
 import javax.persistence.*;
@@ -12,11 +11,9 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
+
+@javax.persistence.Table(name = "Tours")
 public class Tour {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
-    private Long id;
 
     @Column(name = "name", nullable = false, unique = true)
     private String name;
@@ -24,16 +21,42 @@ public class Tour {
     @Column(name = "description", length = 10000)
     private String description;
 
+    @Column(name = "panos")
     @OneToMany(mappedBy = "tour", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<PanoramaFrame> panoramaFrames = new ArrayList<>();
+
+    @Override
+    public String toString() {
+        return "Tour{" +
+                "name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", panoramaFrames=" + panoramaFrames +
+                ", version=" + version +
+                ", id=" + id +
+                '}';
+    }
 
     @Version
     @Column(name = "version")
     private Integer version;
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
+    private Long id;
+
+
+    public void setVersion(Integer version) {
+        this.version = version;
+    }
+
     public Tour(String name, String description) {
         this.name = name;
         this.description = description;
+
+    }
+
+    public Tour() {
 
     }
 
@@ -86,12 +109,4 @@ public class Tour {
         return getClass().hashCode();
     }
 
-    @Override
-    public String toString() {
-        return getClass().getSimpleName() + "(" +
-                "id = " + id + ", " +
-                "name = " + name + ", " +
-                "description = " + description + ", " +
-                "version = " + version + ")";
-    }
 }

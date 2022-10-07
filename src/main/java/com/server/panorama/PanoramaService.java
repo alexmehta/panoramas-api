@@ -1,34 +1,28 @@
 package com.server.panorama;
 
-import com.jlefebure.spring.boot.minio.MinioException;
-import com.jlefebure.spring.boot.minio.MinioService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.nio.file.Paths;
 
 @Service
+@Component
 public class PanoramaService {
-    private final PanoramaRepository repository;
     @Autowired
-    private MinioService minioService;
-
-    public PanoramaService(PanoramaRepository repository) {
-        this.repository = repository;
-    }
+    private PanoramaRepository repository;
+    @Autowired
+    private PhotoStore photoStore;
 
 
-    public PanoramaFrame createPanorama(String name, MultipartFile file) throws MinioException, IOException {
-        uploadPanorama(name, file);
+    public PanoramaFrame createPanorama(MultipartFile file) throws IOException {
         PanoramaFrame p = new PanoramaFrame();
-        p.setPanorama_url(name);
+        photoStore.setContent(p,file.getInputStream());
+        repository.save(p);
         return p;
     }
 
-    public void uploadPanorama(String name, MultipartFile file) throws IOException, MinioException {
-        minioService.upload(Paths.get(name), file.getInputStream(), file.getContentType());
-
-    }
 }

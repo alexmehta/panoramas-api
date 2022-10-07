@@ -6,7 +6,8 @@ import java.util.List;
 
 public class TourPayload {
     private String description;
-    private List<MultipartFile> folder;
+    private MultipartFile[] folder;
+
 
     public String getDescription() {
         return description;
@@ -16,15 +17,15 @@ public class TourPayload {
         this.description = description;
     }
 
-    public List<MultipartFile> getFolder() {
+    public MultipartFile[] getFolder() {
         return folder;
     }
 
-    public void setFolder(List<MultipartFile> folder) {
+    public void setFolder(MultipartFile[] folder) {
         this.folder = folder;
     }
 
-    public TourPayload(String description, List<MultipartFile> folder) {
+    public TourPayload(String description, MultipartFile[] folder) {
         this.description = description;
         this.folder = folder;
     }
