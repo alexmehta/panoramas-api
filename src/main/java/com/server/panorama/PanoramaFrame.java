@@ -1,5 +1,9 @@
 package com.server.panorama;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.server.tour.Tour;
 import org.springframework.content.commons.annotations.ContentId;
 
@@ -12,8 +16,11 @@ public class PanoramaFrame {
 
     @Column
     public @ContentId UUID contentID;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinColumn(name = "tour")
+
+    @JsonIdentityInfo(generator= ObjectIdGenerators.PropertyGenerator.class, property="id")
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private Tour tour;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

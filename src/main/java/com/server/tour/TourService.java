@@ -22,7 +22,7 @@ public class TourService {
     public Long createTour(String name, String description, List<MultipartFile> photos) throws  IOException {
         Tour tour = new Tour(name, description);
         for (MultipartFile photo : photos) {
-            tour.getPanoramaFrames().add(panoramaService.createPanorama(photo));
+            tour.getPanoramaFrames().add(panoramaService.createPanorama(tour,photo));
         }
         tourRepo.save(tour);
         System.out.println(tour.getPanoramaFrames());
@@ -37,6 +37,6 @@ public class TourService {
     }
 
     public Tour getTour(Long id) {
-        return tourRepo.getById(id);
+        return tourRepo.findById(id).get();
     }
 }

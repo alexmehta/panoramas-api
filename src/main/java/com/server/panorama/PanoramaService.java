@@ -1,12 +1,11 @@
 package com.server.panorama;
 
+import com.server.tour.Tour;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
 @Service
@@ -18,9 +17,10 @@ public class PanoramaService {
     private PhotoStore photoStore;
 
 
-    public PanoramaFrame createPanorama(MultipartFile file) throws IOException {
+    public PanoramaFrame createPanorama(Tour t, MultipartFile file) throws IOException {
         PanoramaFrame p = new PanoramaFrame();
-        photoStore.setContent(p,file.getInputStream());
+        photoStore.setContent(p, file.getInputStream());
+        p.setTour(t);
         repository.save(p);
         return p;
     }

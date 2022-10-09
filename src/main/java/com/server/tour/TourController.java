@@ -1,5 +1,4 @@
 package com.server.tour;
-import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -7,7 +6,6 @@ import java.io.IOException;
 import java.util.List;
 
 @RestController()
-@Tag(name = "Tour Controller")
 public class TourController {
 
 
@@ -19,8 +17,8 @@ public class TourController {
 
 
     @GetMapping("/fetch")
-    public List<Tour> fetchAll(int amount){
-        return tourService.fetchAll(amount);
+    public List<Tour> fetchAll(){
+        return tourService.fetchAll(100);
     }
     @PostMapping("/insert/{name}")
     public Tour insert(@PathVariable String name, @RequestBody MultipartFile[] files) throws  IOException {

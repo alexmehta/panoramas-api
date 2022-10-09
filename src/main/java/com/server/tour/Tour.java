@@ -1,5 +1,9 @@
 package com.server.tour;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerator;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.server.panorama.PanoramaFrame;
 import org.hibernate.Hibernate;
 import org.hibernate.annotations.Table;
@@ -22,7 +26,8 @@ public class Tour {
     private String description;
 
     @Column(name = "panos")
-    @OneToMany(mappedBy = "tour", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "tour", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,property = "id")
     private List<PanoramaFrame> panoramaFrames = new ArrayList<>();
 
     @Override
@@ -63,7 +68,6 @@ public class Tour {
     public Integer getVersion() {
         return version;
     }
-
     public List<PanoramaFrame> getPanoramaFrames() {
         return panoramaFrames;
     }
