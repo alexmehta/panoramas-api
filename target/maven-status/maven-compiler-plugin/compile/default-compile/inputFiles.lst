@@ -4,7 +4,9 @@
 /home/alex/panoramas-api/src/main/java/com/server/panorama/PanoramaRepository.java
 /home/alex/panoramas-api/src/main/java/com/server/tour/TourService.java
 /home/alex/panoramas-api/src/main/java/com/server/panorama/PanoramaFrame.java
+/home/alex/panoramas-api/src/main/java/com/server/panorama/PhotoStore.java
 /home/alex/panoramas-api/src/main/java/com/server/panorama/PanoramaService.java
 /home/alex/panoramas-api/src/main/java/com/server/ServerApplication.java
 /home/alex/panoramas-api/src/main/java/com/server/tour/Tour.java
 /home/alex/panoramas-api/src/main/java/com/server/tour/TourPayload.java
+/home/alex/panoramas-api/src/main/java/com/server/panorama/PhotoRepository.java

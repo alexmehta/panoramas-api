@@ -20,9 +20,9 @@ public class TourController {
     public List<Tour> fetchAll(){
         return tourService.fetchAll(100);
     }
-    @PostMapping("/insert/{name}")
-    public Tour insert(@PathVariable String name, @RequestBody MultipartFile[] files) throws  IOException {
-        Long response = tourService.insert(name,"fn", List.of(files));
+    @PostMapping("/insert/{name}/{description}")
+    public Tour insert(@PathVariable String name, @PathVariable String description, @RequestBody MultipartFile[] files) throws  IOException {
+        Long response = tourService.insert(name,description, List.of(files));
 
         return tourService.getTour(response);
     }
