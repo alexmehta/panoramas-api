@@ -27,7 +27,6 @@ public class Tour {
 
     @Column(name = "panos")
     @OneToMany(mappedBy = "tour", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,property = "id")
     private List<PanoramaFrame> panoramaFrames = new ArrayList<>();
 
     @Override

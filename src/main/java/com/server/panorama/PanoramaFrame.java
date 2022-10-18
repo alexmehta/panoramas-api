@@ -45,6 +45,14 @@ public class PanoramaFrame {
         return tour;
     }
 
+    public UUID getContentID() {
+        return contentID;
+    }
+
+    public void setContentID(UUID contentID) {
+        this.contentID = contentID;
+    }
+
     public void setTour(Tour tour) {
         this.tour = tour;
     }
