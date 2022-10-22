@@ -4,9 +4,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.beans.Transient;
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.List;
 
 @RestController()
@@ -18,6 +16,17 @@ public class TourController {
     public TourController(TourService tourService) {
         this.tourService = tourService;
     }
+
+    @PostMapping("/process_tour")
+    public long processTour(@RequestBody String payload){
+        return 0;
+    }
+    @GetMapping("/get_tour{id}")
+    public String getTourJson(@PathVariable Long id){
+       return "";
+    }
+
+
 
 
     @GetMapping("/fetch")
