@@ -26,8 +26,9 @@ public class PanoramaFrame {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     private Long id;
-
-
+    @Column
+    private String name;
+    @Column
     public Long getId() {
         return id;
     }
