@@ -1,8 +1,12 @@
 package com.server.tour;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.server.tour.Tour;
 import com.server.tour.TourService;
+import lombok.SneakyThrows;
+import org.springframework.boot.jackson.JsonObjectDeserializer;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -22,15 +26,19 @@ public class TourController {
         this.tourService = tourService;
     }
 
-    @PostMapping("/process_tour/{string}")
-    public String processTour(@RequestBody JsonNode payload, @PathVariable String string) {
+    @PostMapping(value = "/process_tour/{string}", consumes = MediaType.TEXT_PLAIN_VALUE)
+    public String processTour(@RequestBody String payload, @PathVariable String string) {
         keyStorage.put(string, payload.toString());
         return string;
     }
 
-    @GetMapping("/get_tour{id}")
-    public String getTourJson(@PathVariable String id) {
-        return keyStorage.get(id);
+    @SneakyThrows
+    @GetMapping("/get_tour/{id}")
+    public JsonNode getTourJson(@PathVariable String id) {
+        System.out.println(keyStorage.get(id));
+        ObjectMapper mapper = new ObjectMapper();
+        JsonNode node = mapper.readTree(keyStorage.get((id)));
+        return node;
     }
 
 
